@@ -28,6 +28,15 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const computerSelection = computerPlay();
-const playerSelection = prompt("Choose Rock, Paper, or Scissorspaper: ").toUpperCase();
-console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+    let rounds = prompt("Enter number of rounds to be played: ");
+    for (let i = 0; i < rounds; i++) {
+        console.log(i + 1);
+        const computerSelection = computerPlay();
+        const playerSelection = prompt("Choose Rock, Paper, or Scissorspaper: ").toUpperCase();
+        playRound(playerSelection, computerSelection);
+    }
+}
+
+game();
