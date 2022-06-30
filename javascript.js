@@ -4,25 +4,34 @@ function computerPlay() {
     return randomChoice;
 }
 
+// function playerSelect() {
+//     const playerSelection = prompt("Choose Rock, Paper, or Scissorspaper: ").toUpperCase();
+//     if (playerSelection != "ROCK" || playerSelection != "PAPER" || playerSelection != "SCISSORS") {
+//         console.log("Invalid Selection, enter a correct choice: ");
+//         playerSelection = playerSelect();
+//     }
+//     return playerSelection;
+// }
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === "ROCK" && computerSelection === "PAPER") {
-        console.log("You Lose, PAPER beats ROCK");
+        console.log("You Lose, Paper beats Rock");
     } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
-        console.log("You Win, ROCK beats SCISSORS");
+        console.log("You Win, Rock beats Scissors");
     } else if (playerSelection === "ROCK" && computerSelection === "ROCK") {
-        console.log("Tie");
+        console.log("Rock Ties Rock");
     } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
-        console.log("You Lose, SCISSORS beats PAPER");
+        console.log("You Lose, Scissors beats Paper");
     } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
-        console.log("You Win, PAPER beats ROCK");
+        console.log("You Win, Paper beats Rock");
     } else if (playerSelection === "PAPER" && computerSelection === "PAPER") {
-        console.log("Tie");
+        console.log("Paper Ties Paper");
     } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-        console.log("You Lose, ROCK beats SCISSORS");
+        console.log("You Lose, Rock beats Scissors");
     } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-        console.log("You Win, SCISSORS beats PAPER");
+        console.log("You Win, Scissors beats Paper");
     } else if (playerSelection === "SCISSORS" && computerSelection === "SCISSORS") {
-        console.log("Tie");
+        console.log("Scissors Ties Scissors");
     } else {
         console.log("Invalid Selection");
     }
