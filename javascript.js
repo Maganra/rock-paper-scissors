@@ -1,51 +1,72 @@
+const results = document.querySelector('#results');
+const playerScore = document.querySelector('#player');
+const computerScore = document.querySelector('#computer');
+let pScore = 0;
+let cScore = 0;
 function computerPlay() {
     let choices = ["ROCK", "PAPER", "SCISSORS"];
     let randomChoice = choices[Math.floor(Math.random()*choices.length)];
     return randomChoice;
 }
 
-// function playerSelect() {
-//     const playerSelection = prompt("Choose Rock, Paper, or Scissorspaper: ").toUpperCase();
-//     if (playerSelection != "ROCK" || playerSelection != "PAPER" || playerSelection != "SCISSORS") {
-//         console.log("Invalid Selection, enter a correct choice: ");
-//         playerSelection = playerSelect();
-//     }
-//     return playerSelection;
-// }
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === "ROCK" && computerSelection === "PAPER") {
-        console.log("You Lose, Paper beats Rock");
+        results.textContent = "You Lose, Paper beats Rock";
+        computerScore.textContent = ++cScore;
+        winner();
     } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
-        console.log("You Win, Rock beats Scissors");
+        results.textContent = "You Win, Rock beats Scissors";
+        playerScore.textContent = ++pScore;
+        winner();
     } else if (playerSelection === "ROCK" && computerSelection === "ROCK") {
-        console.log("Rock Ties Rock");
+        results.textContent ="Rock Ties Rock";
+        computerScore.textContent = ++cScore;
+        playerScore.textContent = ++pScore;
+        winner();
     } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
-        console.log("You Lose, Scissors beats Paper");
+        results.textContent ="You Lose, Scissors beats Paper";
+        computerScore.textContent = ++cScore;
+        winner();
     } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
-        console.log("You Win, Paper beats Rock");
+        results.textContent ="You Win, Paper beats Rock";
+        playerScore.textContent = ++pScore;
+        winner();
     } else if (playerSelection === "PAPER" && computerSelection === "PAPER") {
-        console.log("Paper Ties Paper");
+        results.textContent ="Paper Ties Paper";
+        computerScore.textContent = ++cScore;
+        playerScore.textContent = ++pScore;
+        winner();
     } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-        console.log("You Lose, Rock beats Scissors");
+        results.textContent ="You Lose, Rock beats Scissors";
+        computerScore.textContent = ++cScore;
+        winner();
     } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-        console.log("You Win, Scissors beats Paper");
+        results.textContent ="You Win, Scissors beats Paper";
+        playerScore.textContent = ++pScore;
+        winner();
     } else if (playerSelection === "SCISSORS" && computerSelection === "SCISSORS") {
-        console.log("Scissors Ties Scissors");
+        results.textContent ="Scissors Ties Scissors";
+        computerScore.textContent = ++cScore;
+        playerScore.textContent = ++pScore;
+        winner();
     } else {
-        console.log("Invalid Selection");
+        results.textContent ="Invalid Selection";
     }
 }
 
+function winner() {
+    if (pScore >= 5) {
+        alert("You won the game!");
+    } else if (cScore >= 5) {
+        alert("You lost the game.");
+    }
+}
 
-function game() {
-    let rounds = prompt("Enter number of rounds to be played: ");
-    for (let i = 0; i < rounds; i++) {
-        console.log(i + 1);
-        const computerSelection = computerPlay();
-        const playerSelection = prompt("Choose Rock, Paper, or Scissorspaper: ").toUpperCase();
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let computerSelection = computerPlay();
+        let playerSelection = button.id;
         playRound(playerSelection, computerSelection);
-    }
-}
-
-game();
+    })
+})
